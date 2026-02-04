@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@layer base{
+body{
+    overflow: hidden;
+}
+}
+
+/* If you see this in your CSS, delete it or change it to 'auto' */
+html, body {
+  overflow: hidden; /* THIS BLOCKS SCROLLING */
+}
