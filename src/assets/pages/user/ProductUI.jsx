@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCart } from "./Cartprovider";
 import { Navbar } from "./Navbar";
 import toast from "react-hot-toast";
@@ -9,10 +9,11 @@ function ProductUI() {
 
   const {addToCart} = useCart()
   const {addToWishlist} = useWishlist()
-
+  const userID = localStorage.getItem("user");
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -93,7 +94,11 @@ function ProductUI() {
 
           <div className="mt-12 flex flex-col sm:flex-row gap-6">
             <button
-            onClick={()=>{addToCart(product)
+            onClick={()=>{
+               if(!userID){
+                          return toast.error("Please login to manage your cart");
+                        }
+              addToCart(product)
               toast.success("item added to cart")
             }}
               className="flex-1 bg-[#c8a97e] hover:bg-[#f5deb3] text-[#1a140e] py-4 text-[11px] font-bold uppercase tracking-[0.3em] transition-all duration-500 shadow-xl active:scale-95"
@@ -102,6 +107,7 @@ function ProductUI() {
             </button>
 
             <button
+            onClick={() => navigate("/detailsandpayment")}
               className="flex-1 border border-[#c8a97e]/40 hover:border-[#c8a97e] text-[#c8a97e] hover:text-white py-4 text-[11px] font-bold uppercase tracking-[0.3em] transition-all duration-500 active:scale-95"
             >
               Buy Now

@@ -3,6 +3,7 @@ import { Navbar } from './Navbar'
 import Luxurybackground from './Luxurybackground'
 import Maincomponent from './Maincomponent'
 import Footer from './Footer';
+import Maincomponent2 from './Maincomponent2'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <div className="relative z-10">
         <Navbar />
         <Maincomponent />
+        <Maincomponent2/>
         <Footer/>
        
       </div>

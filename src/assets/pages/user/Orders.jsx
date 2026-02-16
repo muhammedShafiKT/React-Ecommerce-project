@@ -40,8 +40,7 @@ const Orders = () => {
         px-6 
         pt-28 
         pb-16 
-        lg:px-20
-      ">
+        lg:px-20   ">
         <div className="max-w-5xl mx-auto">
 
           <div className="mb-12">

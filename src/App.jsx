@@ -1,6 +1,6 @@
-
 import { Toaster } from 'react-hot-toast'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import Login from './assets/pages/user/login'
 import Home from './assets/pages/user/home'
 import Products from './assets/pages/user/Products'
@@ -10,13 +10,16 @@ import Wishlist from './assets/pages/user/Wishlist'
 import Register from './assets/pages/user/Register'
 import Orders from './assets/pages/user/Orders'
 import Detailsandpayment from './assets/pages/user/Detailsandpayment'
+import AdminRoute from './assets/pages/admin/Adminroute'
+import AdminLayout from './assets/pages/admin/Adminlayouut'
+import AdminProducts from './assets/pages/admin/AdminProducts'
+import AdminDashboard from './assets/pages/admin/AdminDashboard'
 
-
-
+import AdminOrders from './assets/pages/admin/AdminOrders'
+import AdminUsers from './assets/pages/admin/AdminUsers'
+import { ProfileEditor } from './assets/pages/user/EditUser'
 
 function App() {
-
-
   return (
     <BrowserRouter>
       <Toaster
@@ -34,24 +37,12 @@ function App() {
             padding: "16px 24px",
             fontFamily: "serif",
           },
-
-          success: {
-            iconTheme: {
-              primary: "#c8a97e",
-              secondary: "#1a140e"
-            }
-          },
-
-          error: {
-            iconTheme: {
-              primary: "#991b1b",
-              secondary: "#1a140e"
-            }
-          }
         }}
       />
 
       <Routes>
+
+
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
@@ -62,19 +53,23 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/detailsandpayment" element={<Detailsandpayment />} />
+        <Route path='profile' element={<ProfileEditor />} />
 
+
+        
+        <Route element={<AdminRoute />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="products" element={<AdminProducts />} />
+            <Route path="orders" element={<AdminOrders />} />
+           <Route path="users" element={<AdminUsers />} />
+
+          </Route>
+        </Route>
 
       </Routes>
     </BrowserRouter>
-
-
-
-
-
-
-
-
-  )
+  );
 }
 
-export default App
+export default App;

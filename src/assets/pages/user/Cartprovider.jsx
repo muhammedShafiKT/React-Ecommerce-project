@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect, useState, createContext, useContext } from "react";
-import toast from "react-hot-toast";
+
+import { useNavigate } from "react-router-dom";
 
 
 const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
+
 
 export const Cartprovider = ({ children }) => {
 
@@ -44,6 +46,8 @@ export const Cartprovider = ({ children }) => {
     const userId = getUserId();
 
     if (!userId) return alert("Login first");
+       
+
 
     try {
       const res = await axios.get(

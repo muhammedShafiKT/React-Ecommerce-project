@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { useCart } from "./Cartprovider.jsx";
 import { Navbar } from "./Navbar.jsx";
 import axios from "axios";
@@ -25,6 +24,43 @@ const DetailsAndPayment = () => {
 
   const [paymentMethod, setPaymentMethod] = useState("cod");
 
+  /* =========================
+     PREFILL FROM DB (LAST ADDRESS)
+     ========================= */
+
+  useEffect(() => {
+    const raw = localStorage.getItem("user");
+    const userId = raw ? JSON.parse(raw) : null;
+
+    if (!userId) return;
+
+    const fetchUserAndPrefill = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:3001/user/${userId}`
+        );
+
+        const user = res.data;
+
+        // Prefer saved address if exists
+        if (user.lastAddress) {
+          setDetails(user.lastAddress);
+        }
+        // Otherwise fallback to last order
+        else if (user.orders?.length) {
+          const lastOrder = user.orders[user.orders.length - 1];
+          if (lastOrder.customer) {
+            setDetails(lastOrder.customer);
+          }
+        }
+      } catch (err) {
+        console.error("Prefill failed:", err);
+      }
+    };
+
+    fetchUserAndPrefill();
+  }, []);
+
   const handleChange = (e) => {
     setDetails({
       ...details,
@@ -35,13 +71,10 @@ const DetailsAndPayment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-   const raw = localStorage.getItem("user");
+    const raw = localStorage.getItem("user");
+    const userId = raw ? JSON.parse(raw) : null;
 
-const userId = raw ? JSON.parse(raw) : null;
-
- console.log("User ID:", userId);
     if (!userId) {
-       console.log("User ID:", userId);
       alert("Please login first!");
       navigate("/orders");
       return;
@@ -58,24 +91,23 @@ const userId = raw ? JSON.parse(raw) : null;
     };
 
     try {
-     
       const res = await axios.get(
         `http://localhost:3001/user/${userId}`
       );
 
       const user = res.data;
 
+      // ✅ IMPORTANT: update BOTH orders + saved address
       await axios.patch(
-  `http://localhost:3001/user/${userId}`,
-  {
-    orders: [...(user.orders || []), newOrder],
-    cart: []
-  }
-);
-    
+        `http://localhost:3001/user/${userId}`,
+        {
+          orders: [...(user.orders || []), newOrder],
+          lastAddress: details,   // <---- THIS MAKES CHANGES PERSIST
+          cart: []
+        }
+      );
 
       setCart([]);
-
       navigate("/orders");
 
     } catch (error) {
@@ -85,11 +117,10 @@ const userId = raw ? JSON.parse(raw) : null;
   };
 
   return (
-    <div className=" h-screen overflow-y-auto">
+    <div className="h-screen overflow-y-auto">
       <Navbar />
 
-      <div
-        className="
+      <div className="
         overflow-y-auto 
         min-h-screen 
         bg-[#0f0a07] 
@@ -98,8 +129,7 @@ const userId = raw ? JSON.parse(raw) : null;
         pt-28 
         pb-16
         lg:px-20
-      "
-      >
+      ">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           <form onSubmit={handleSubmit} className="space-y-8">
@@ -172,7 +202,6 @@ const userId = raw ? JSON.parse(raw) : null;
             <h2 className="text-xl font-serif italic text-white/90 mt-10">
               Payment Method
             </h2>
-            <div className="h-[1px] w-20 bg-[#c8a97e] mb-6"></div>
 
             <div className="space-y-4">
               <label className="flex items-center gap-3 cursor-pointer">
@@ -216,6 +245,7 @@ const userId = raw ? JSON.parse(raw) : null;
             </button>
           </form>
 
+ 
           <div>
             <div className="bg-[#1a140e]/40 border border-[#c8a97e]/10 p-8 sticky top-32">
               <h2 className="text-[10px] uppercase tracking-[0.4em] text-[#c8a97e] mb-6">

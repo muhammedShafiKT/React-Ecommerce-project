@@ -1,72 +1,40 @@
 {
   "user": [
     {
-      "id": "0eee",
-      "name": "shafi",
-      "email": "shafi@gmail.com",
-      "password": "1234",
-      "confirmPassword": "1234",
-      "cart": [
-        {
-          "productId": "3",
-          "description": "Full length minimalist mirror with brushed gold aluminum frame and anti shatter safety backing. Ideal for bedrooms, dressing rooms, and entryways.",
-          "price": 13999,
-          "images": "/products/3.jpg",
-          "qty": 2
-        }
-      ],
-      "wishlist": [
-        {
-          "productId": "2",
-          "description": "Organic parametric shelving unit crafted from laminated wood with flowing structural geometry. Perfect for modern interiors and designer spaces.",
-          "price": 49999,
-          "images": "/products/2.jpg",
-          "qty": 1
-        }
-      ],
-      "orders": []
-    },
-    {
-      "id": "1ed9",
-      "name": "mg",
-      "email": "my@g",
-      "password": "123",
-      "confirmPassword": "123",
+      "id": "admin1",
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin111",
+      "role": "admin",
       "cart": [],
       "wishlist": [],
       "orders": []
     },
     {
-      "id": "f28c",
-      "name": "3",
-      "email": "3@g",
-      "password": "3@g",
-      "confirmPassword": "3@g",
+      "id": "9be9",
+      "name": "shafiv",
+      "email": "shafi@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "123456",
+      "role": "user",
       "cart": [],
-      "wishlist": [
-        {
-          "productId": "3",
-          "description": "Full length minimalist mirror with brushed gold aluminum frame and anti shatter safety backing. Ideal for bedrooms, dressing rooms, and entryways.",
-          "price": 13999,
-          "images": "/products/3.jpg",
-          "qty": 1
-        }
-      ],
+      "wishlist": [],
       "orders": [
         {
-          "orderId": "ORD-1770107686156",
-          "date": "2026-02-03T08:34:46.156Z",
+          "orderId": "ORD-1770870486632",
+          "date": "2026-02-12T04:28:06.632Z",
           "customer": {
             "name": "shafi",
             "email": "shafi@gmail.com",
-            "phone": "123",
-            "address": "shafee",
-            "city": "ww",
-            "pincode": "eeer"
+            "phone": "vaniamkulam",
+            "address": "ottappalm",
+            "city": "Palakkad",
+            "pincode": "679522"
           },
-          "paymentMethod": "upi",
+          "paymentMethod": "cod",
           "items": [
             {
+              "productId": "2",
               "description": "Organic parametric shelving unit crafted from laminated wood with flowing structural geometry. Perfect for modern interiors and designer spaces.",
               "price": 49999,
               "images": "/products/2.jpg",
@@ -77,91 +45,134 @@
           "status": "Processing"
         },
         {
-          "orderId": "ORD-1770107780406",
-          "date": "2026-02-03T08:36:20.406Z",
+          "orderId": "ORD-1770896065105",
+          "date": "2026-02-12T11:34:25.105Z",
           "customer": {
             "name": "shafi",
-            "email": "aa@ee",
-            "phone": "aaaa",
-            "address": "aaaa",
-            "city": "aa",
-            "pincode": "aaa"
+            "email": "shafi@gmail.com",
+            "phone": "vaniamkulam",
+            "address": "ottappalm",
+            "city": "Palakkad",
+            "pincode": "679522"
           },
-          "paymentMethod": "card",
+          "paymentMethod": "cod",
           "items": [
             {
-              "productId": "6",
-              "description": "Modern Scandinavian dining sofa set with solid wood oval table and ergonomic upholstered sofa chairs. Designed for family dining and gatherings.",
-              "price": 15999,
-              "images": "https://i.pinimg.com/736x/75/6d/e1/756de111fcb690d34f622e80086461c8.jpg",
-              "qty": 1
-            },
-            {
-              "productId": "8",
-              "description": "Premium accent chair with channel tufting, high density foam cushioning, and solid wood legs. Designed for modern living rooms and lounge spaces.",
-              "price": 24999,
-              "images": "https://i.pinimg.com/736x/ed/a6/1a/eda61a0748005ed5ca9b3b5d7e36f0ff.jpg",
-              "qty": 1
-            },
-            {
-              "productId": "7",
+              "productId": "1",
               "description": "Premium velvet accent chair with channel tufting, high density foam cushioning, and solid wood legs. Designed for modern living rooms and lounge spaces.",
               "price": 19999,
-              "images": "/products/7.jpg",
+              "images": [
+                "/products/1.jpg"
+              ],
               "qty": 1
             }
           ],
-          "total": 60997,
-          "status": "Processing"
-        },
-        {
-          "orderId": "ORD-1770179627669",
-          "date": "2026-02-04T04:33:47.669Z",
-          "customer": {
-            "name": "shafi",
-            "email": "muhammedshafikt85@gmail.com",
-            "phone": "123",
-            "address": ";ui",
-            "city": "hhk",
-            "pincode": "jggjjgk"
-          },
-          "paymentMethod": "card",
-          "items": [
-            {
-              "description": "Full length minimalist mirror with brushed gold aluminum frame and anti shatter safety backing. Ideal for bedrooms, dressing rooms, and entryways.",
-              "price": 13999,
-              "images": "/products/3.jpg",
-              "qty": 1
-            }
-          ],
-          "total": 13999,
+          "total": 19999,
           "status": "Processing"
         }
-      ]
+      ],
+      "status": "blocked",
+      "lastAddress": {
+        "name": "shafi",
+        "email": "shafi@gmail.com",
+        "phone": "vaniamkulam",
+        "address": "ottappalm",
+        "city": "Palakkad",
+        "pincode": "679522"
+      }
+    },
+    {
+      "id": "9a3e",
+      "name": "velu",
+      "email": "veku@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "role": "user",
+      "cart": [],
+      "wishlist": [],
+      "orders": [
+        {
+          "orderId": "ORD-1770700164981",
+          "date": "2026-02-10T05:09:24.981Z",
+          "customer": {
+            "name": "veku",
+            "email": "veku@gmail.com",
+            "phone": "12345678",
+            "address": "qwerty",
+            "city": "eerrr",
+            "pincode": "bnb"
+          },
+          "paymentMethod": "cod",
+          "items": [
+            {
+              "productId": "2",
+              "description": "Organic parametric shelving unit crafted from laminated wood with flowing structural geometry. Perfect for modern interiors and designer spaces.",
+              "price": 49999,
+              "images": "/products/2.jpg",
+              "qty": 1
+            }
+          ],
+          "total": 49999,
+          "status": "Delivered"
+        }
+      ],
+      "status": "active"
+    },
+    {
+      "id": "acb9",
+      "name": "mj",
+      "email": "mj@gmail.com",
+      "password": "1",
+      "confirmPassword": "1",
+      "role": "user",
+      "status": "active",
+      "cart": [],
+      "wishlist": [],
+      "orders": []
+    },
+    {
+      "id": "2826",
+      "name": "rrr",
+      "email": "shafi123@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "status": "active",
+      "cart": [],
+      "wishlist": [],
+      "orders": []
+    },
+    {
+      "id": "2d86",
+      "name": "ggqq",
+      "email": "g@gmail.com",
+      "password": "12345678",
+      "role": "user",
+      "status": "active",
+      "cart": [
+        {
+          "productId": "1",
+          "description": "Premium velvet accent chair with channel tufting, high density foam cushioning, and solid wood legs. Designed for modern living rooms and lounge spaces.",
+          "price": 24999,
+          "images": "/products/1.jpg",
+          "qty": 1
+        }
+      ],
+      "wishlist": [],
+      "orders": []
     }
   ],
   "products": [
     {
-      "id": "1",
       "name": "Velvet Barrel Accent Chair",
-      "brand": "LuxeForm",
       "category": "chairs",
-      "price": 24999,
-      "stock": 32,
-      "rating": 4.6,
-      "description": "Premium velvet accent chair with channel tufting, high density foam cushioning, and solid wood legs. Designed for modern living rooms and lounge spaces.",
-      "material": [
-        "Velvet",
-        "Solid Wood",
-        "Foam"
+      "price": 19999,
+      "stock": 0,
+      "images": [
+        "/products/1.jpg"
       ],
-      "dimensions": {
-        "width": 76,
-        "height": 72,
-        "depth": 70,
-        "unit": "cm"
-      },
-      "images": "/products/1.jpg"
+      "brand": "LuxeForm",
+      "description": "Premium velvet accent chair with channel tufting, high density foam cushioning, and solid wood legs. Designed for modern living rooms and lounge spaces.",
+      "id": "1"
     },
     {
       "id": "2",
@@ -206,26 +217,16 @@
       "images": "/products/3.jpg"
     },
     {
-      "id": "4",
       "name": "Boucle Cloud Lounge Chair",
-      "brand": "SoftHaus",
       "category": "chairs",
       "price": 55999,
       "stock": 11,
-      "rating": 4.8,
-      "description": "Ultra soft boucle lounge chair featuring cloud inspired segmented cushioning and ergonomic wrap seating for maximum comfort.",
-      "material": [
-        "Boucle Fabric",
-        "Foam",
-        "Steel Frame"
+      "images": [
+        "/products/4.jpg"
       ],
-      "dimensions": {
-        "width": 90,
-        "height": 65,
-        "depth": 90,
-        "unit": "cm"
-      },
-      "images": "/products/4.jpg"
+      "brand": "SoftHaus",
+      "description": "Ultra soft boucle lounge chair featuring cloud inspired segmented cushioning and ergonomic wrap seating for maximum comfort.",
+      "id": "4"
     },
     {
       "id": "5",

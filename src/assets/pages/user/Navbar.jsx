@@ -8,10 +8,13 @@ export const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [query, setQuery] = useState("");
 
+  const userId = localStorage.getItem("user");
+
   useEffect(() => {
-    const userId = localStorage.getItem("user");
     setIsAuthenticated(!!userId);
-  }, []);
+  }, [userId]);
+
+  
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -44,14 +47,12 @@ export const Navbar = () => {
           Luxora
         </h2>
 
-     
         <div className="hidden md:flex items-center gap-10">
           {[
             { name: "Home", path: "/" },
             { name: "Products", path: "/products" },
-           
             { name: "Wishlist", path: "/wishlist" },
-             { name: "Cart", path: "/cart" },
+            { name: "Cart", path: "/cart" },
           ].map((item) => (
             <div
               key={item.name}
@@ -64,65 +65,76 @@ export const Navbar = () => {
           ))}
         </div>
 
-       <form
-  onSubmit={handleSearch}
-  className="hidden md:flex items-center relative group"
->
-  <input
-    type="search"
-    placeholder="Search products..."
-    value={query}
-    onChange={(e) => setQuery(e.target.value)}
-    className="
-      bg-[#0f0a07] 
-      border border-[#c8a97e]/30 
-      text-[#e6c89c]
-      placeholder-[#c8a97e]/40
-      pl-4 pr-10 py-2 
-      rounded-full 
-      outline-none
-      w-56
-      focus:w-72
-      focus:border-[#c8a97e]
-      transition-all duration-500 ease-in-out
-      text-sm
-    "
-  />
+        <form
+          onSubmit={handleSearch}
+          className="hidden md:flex items-center relative group"
+        >
+          <input
+            type="search"
+            placeholder="Search products..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="
+              bg-[#0f0a07] 
+              border border-[#c8a97e]/30 
+              text-[#e6c89c]
+              placeholder-[#c8a97e]/40
+              pl-4 pr-10 py-2 
+              rounded-full 
+              outline-none
+              w-56
+              focus:w-72
+              focus:border-[#c8a97e]
+              transition-all duration-500 ease-in-out
+              text-sm
+            "
+          />
 
-  <button
-    type="submit"
-    className="absolute right-3 p-1 text-[#c8a97e] hover:text-[#f5deb3] transition-colors duration-300"
-  >
-   
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      fill="none" 
-      viewBox="0 0 24 24" 
-      strokeWidth="1.5" 
-      stroke="currentColor" 
-      className="w-5 h-5 transition-transform duration-300 active:scale-90"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-    </svg>
-  </button>
-</form>
+          <button
+            type="submit"
+            className="absolute right-3 p-1 text-[#c8a97e] hover:text-[#f5deb3] transition-colors duration-300"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              strokeWidth="1.5" 
+              stroke="currentColor" 
+              className="w-5 h-5 transition-transform duration-300 active:scale-90"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </button>
+        </form>
 
-     
-        {isAuthenticated ? (
-          <div
-            onClick={handleLogout}
-            className="hidden md:block px-8 py-2 rounded-full border border-[#c8a97e]/40 text-[#c8a97e] text-[10px] tracking-[0.2em] uppercase font-bold cursor-pointer hover:bg-[#c8a97e] hover:text-[#0f0a07] transition-all duration-500 active:scale-95"
-          >
-            Logout
-          </div>
-        ) : (
-          <div
-            onClick={() => handleNavigate("/login")}
-            className="hidden md:block px-8 py-2 rounded-full border border-[#c8a97e]/40 text-[#c8a97e] text-[10px] tracking-[0.2em] uppercase font-bold cursor-pointer hover:bg-[#c8a97e] hover:text-[#0f0a07] transition-all duration-500 active:scale-95"
-          >
-            Login
-          </div>
-        )}
+        {/* ✅ ONLY NEW THING — EDIT ICON (everything else unchanged) */}
+        <div className="hidden md:flex items-center gap-3">
+          {isAuthenticated && (
+            <button
+              onClick={() => handleNavigate("/profile")}
+              className="p-2 rounded-full border border-[#c8a97e]/30 hover:bg-[#c8a97e]/10 transition-all"
+              title="Edit Profile"
+            >
+              ✏️
+            </button>
+          )}
+
+          {isAuthenticated ? (
+            <div
+              onClick={handleLogout}
+              className="px-8 py-2 rounded-full border border-[#c8a97e]/40 text-[#c8a97e] text-[10px] tracking-[0.2em] uppercase font-bold cursor-pointer hover:bg-[#c8a97e] hover:text-[#0f0a07] transition-all duration-500 active:scale-95"
+            >
+              Logout
+            </div>
+          ) : (
+            <div
+              onClick={() => handleNavigate("/login")}
+              className="px-8 py-2 rounded-full border border-[#c8a97e]/40 text-[#e6c89c] text-[10px] tracking-[0.2em] uppercase font-bold cursor-pointer hover:bg-[#c8a97e] hover:text-[#0f0a07] transition-all duration-500 active:scale-95"
+            >
+              Login
+            </div>
+          )}
+        </div>
 
         <button
           className="md:hidden flex flex-col gap-1.5"
